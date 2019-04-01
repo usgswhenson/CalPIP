@@ -8,10 +8,10 @@ projectName='Monterey'
 countyCode='27'
 NFARM=31
 if NFARM==0: NFARM=1 #must be at least 1 aggregation region
-times = range(1988,2017)
+times = range(1974,2017)
 
 ##FLAGS
-relative = False #SPecifying a local path for data instead of relative
+relative = True #SPecifying a local path for data instead of relative
 modelLU = True
 newProject=True
 ModelLU=True
@@ -40,19 +40,21 @@ if not relative:
     base_path = basePath
     plotDirectory = r'C:\WesSVN\USGS\CalPIP2\Projects\{}\Output\Plots'.format(projectName)
     joinDirectory= r'C:\WesSVN\USGS\CalPIP2\Projects\{}\Output\CalPIPJoin'.format(projectName)
-    lookupDirectory=r'C:\WesSVN\USGS\CalPIP2\Data\LookUp'.format(projectName)
+    lookupDirectory=r'C:\WesSVN\USGS\CalPIP2\Data\Lookup'.format(projectName)
     dataDirectory=r'C:\WesSVN\USGS\CalPIP2\Data\Before1990'.format(projectName)
     dataDirectory1990=r'C:\WesSVN\USGS\CalPIP2\Data\After1990'.format(projectName)
     projectData=r'C:\WesSVN\USGS\CalPIP2\Projects\{}\ExtractedData'.format(projectName)
 else:
-    basePath= r'..\Projects\{}'.format(projectName)
+    cwd = os.path.dirname(os.getcwd())
+    print(cwd)
+    basePath= os.path.join(cwd,'Projects', '{}'.format(projectName))
     base_path = basePath
-    plot_path = r'..\Projects\{}\Output\Plots'.format(projectName)
-    joinDirectory= r'..\Projects\{}\Output\CalPIPJoin'.format(projectName)
-    lookupDirectory=r'..\Data\LookUp'.format(projectName)
-    dataDirectory=r'..\Data\Before1990'.format(projectName)
-    dataDirectory1990=r'..\Data\After1990'.format(projectName)
-    projectData=r'..\Projects\{}\Extracted_Data'.format(projectName)
+    plotDirectory = os.path.join(basePath, 'Output', 'Plots')
+    joinDirectory= os.path.join(basePath,'Output','CalPIPJoin')
+    lookupDirectory=os.path.join(cwd,'Data','Lookup')
+    dataDirectory=os.path.join(cwd,'Data', 'Before1990')
+    dataDirectory1990=os.path.join(cwd,'Data','After1990')
+    projectData=os.path.join(basePath,'ExtractedData')
     ##RELATED PATHS FOR USE OF CALPIP FOR FMP
     #FMPOutput
     FMPOutBasePath= r'D:\LandUse\LU Processing'
