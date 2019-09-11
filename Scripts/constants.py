@@ -8,7 +8,7 @@ projectName='Monterey'
 countyCode='27'
 NFARM=31
 if NFARM==0: NFARM=1 #must be at least 1 aggregation region
-times = range(1974,2017)
+times = range(1974,1975)
 
 ##FLAGS
 relative = True #SPecifying a local path for data instead of relative
