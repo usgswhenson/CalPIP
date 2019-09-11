@@ -1,6 +1,6 @@
 ﻿#'''this script reads in CalPIP data tables and summarizes crop rotations. 
 #Created by W. Henson 11/1/16'''
-
+#updated by anav Mittal 2/1/19
 import os
 import numpy as np
 import datetime
